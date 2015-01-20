@@ -1,22 +1,29 @@
-\documentclass[en]{../../../eplsummary}
+\documentclass[10pt, a4paper]{article}
 
+\usepackage[utf8x]{inputenc} % Document UTF8
+\usepackage[francais]{babel} % Le document est en francais
+\usepackage[T1]{fontenc} % Suppression d'un warning
+\usepackage{color} % utilisation textcolor
+\usepackage{amsmath}
 \usepackage{multirow}
 \usepackage{multicol}
 \usepackage{graphicx}
-\usepackage{listings}
+\usepackage{listings} % Pour le code
+\usepackage{moreverb}
 
 % Footnote in tabular
 \usepackage{footnote}
-\makesavenoteenv{tabular}
-\makesavenoteenv{table}
 
-\hypertitle{Computer Networks : Information transfer}{5}{INGI}{1341}
-{Nicolas Houtain\and Benoît Legat\and Gorby Nicolas Ndonda Kabasele\and Florian Thuin}
-{Olivier Bonaventure}
+\title{LINGI1341 Computer Networks : Information transfer}
+\author{Nicolas Houtain\and Benoît Legat\and Gorby Nicolas Ndonda Kabasele\and Florian Thuin}
 
 \graphicspath{{images/}}
-%\lsinputpath{algorithm/}
-\lstset{inputpath=algorithm}
+\lstset{inputpath=algorithm, keepspaces=true, morekeywords={isin, each}, keywordstyle=\color{red!70}, commentstyle=\color{blue!60}, breaklines=true}
+
+\begin{document}
+\maketitle
+
+\tableofcontents
 
 \paragraph{French}
 There is some part in french because this is a merge between 2 summaries.
@@ -48,7 +55,7 @@ It needs to be translated.
 
 \section{Layers}
 
-The different layers are represented by the \tabref{layers}.
+The different layers are represented par le tableau layers.
 A router only has the 3 layers: Network, Datalink and Physical. TCP/IP model combine Datalink and Physical layer to Link layer
 \begin{table}[!ht]
   \centering
@@ -101,7 +108,6 @@ A router only has the 3 layers: Network, Datalink and Physical. TCP/IP model com
 	\end{tabular}
 \end{table}
 
-\begin{myexem}
   An HTTPS request will use the following protocols in each layer of the OSI model:
   \begin{description}
     \item[Application] HTTP,
@@ -112,7 +118,6 @@ A router only has the 3 layers: Network, Datalink and Physical. TCP/IP model com
     \item[Datalink] IEEE 802.3 (Ethernet),
     \item[Physical] IEEE 802.3 or IEEE 802.11 (Wireless Local Area Network).
   \end{description}
-\end{myexem}
 
 \subsection{Physical Layer}
 The Physical Layer service is provided by
@@ -347,7 +352,7 @@ Flat is like number telephone (small match to forwad packet) and hierachical is 
         \end{enumerate}
 \end{enumerate}
 
-\begin{figure}[h]
+\begin{figure}[!ht]
     \centering
     \includegraphics[width=12cm]{heterogeneous.png}
     \caption{Example of heterogeneous datalink layer}
@@ -521,7 +526,7 @@ bidirectionnel}) et fermer la connection.
 \paragraph{\textbf{Connection}}
 
 \paragraph{Refus:} Soit de la part du destinataire, soit du provider.
-\begin{figure}[h]
+\begin{figure}[!ht]
     \centering
     \includegraphics[width=8cm]{refus.png}
     \caption{Refus connection}
@@ -529,7 +534,7 @@ bidirectionnel}) et fermer la connection.
 
 \subparagraph{Three-way handshake:} est utilisé contre l'approche naive de la connexion ``aller-retour''.  Celle ci est définie par l'envoi d'un \textbf{CR}, répondu par \textbf{CA} qui répond \textbf{CA}.
 
-\begin{figure}[h]
+\begin{figure}[!ht]
     \centering
     \includegraphics[width=12cm]{threeway.png}
     \caption{Three way handshake connection establishment}
@@ -542,7 +547,7 @@ to be incremented even if the transport entity stops or reboots})
 Implemented with $k$ bits counter and its \textbf{clock cycle} is such that
 $2^k \times cycle >> MSL$
 
-\begin{figure}[h]
+\begin{figure}[!ht]
     \centering
     \begin{tabular}{ccc}
     \includegraphics[width=5cm]{three1.png}
@@ -589,7 +594,7 @@ paquets envoyés  ne prennent pas  forcément le  même path et  il peut
         (\textit{correspondant à la position du premier \textbf{byte} du payload dans
         le bytestream}) et des numéro d'ackowledgement. 
 
-        $\to$ 32 ou 64bits nécessaire (pour detecter les délais et parce que les n° s'usent plus vite) plutot que 
+        $\to$ 32 ou 64 bits nécessaire (pour detecter les délais et parce que les numéros s'usent plus vite) plutot que 
         8 dans les datalinks layer protocol.
 \end{enumerate}
 
@@ -628,7 +633,7 @@ strings. (\textit{for friendly human using}). At first, there was a file (hosts.
 IP address.
 Then, it was decided to organise the name as a tree structure. Each of the top-level domain is managed by 
 an organisation that decides how sub-domain names can be registered.
-\begin{figure}[h]
+\begin{figure}[!ht]
     \centering
     \includegraphics[width=6cm]{internet.png}
     \caption{Internet tree structure}
@@ -660,7 +665,7 @@ Using name instead of address allows:
 \end{itemize}
 
 \subsubsection{Organisation to sharing bandwith}
-\begin{figure}[h]
+\begin{figure}[!ht]
     \centering
     \begin{tabular}{ccccc}
     \includegraphics[width=2cm]{fullmesh.png} &
@@ -876,7 +881,7 @@ To solve this, there is two control frame \textsc{RTS} (ask for a delay reservat
 and \textsc{CTS} (to comfirm reservation). (\textit{small size to minimize collision}).
 All host are informed of the reservation.
 
-\begin{figure}[h]
+\begin{figure}[!ht]
     \centering
     \includegraphics[width=6cm]{hiddenstation.png}
     \caption{Hidden station problem}
@@ -933,7 +938,7 @@ When start, \textit{cwin} is set to one segment and it increases (\textit{additi
 \subsection{The reference models}
 
 
-\begin{table}[h]
+\begin{table}[!ht]
     \begin{tabular}{|c|c|c|c|}
         \hline
         Application & SDU     &                                        &  \\
@@ -967,7 +972,7 @@ and are \textcolor{red}{identified} by a port number and a network adress (\text
 
 \subsection{DNS}
 
-\begin{figure}[h]
+\begin{figure}[!ht]
     \centering
     \includegraphics[width=10cm]{dnsheader.png}
     \caption{DNS header}
@@ -992,7 +997,7 @@ A \textbf{email system} is composed :
     \item Software : to efficiently exchange email by server
 \end{itemize}
  
-\begin{figure}[h]
+\begin{figure}[!ht]
     \centering
     \includegraphics[width=10cm]{mail.png}
     \caption{Simplified architecture mail}
@@ -1024,18 +1029,18 @@ SMTP is a client/server protcolol and text-based protocol relies on the
 connection-oriented service. (\textit{Server listen on port 25})
 \paragraph{Note:} DNS MX record of the DNS is used to find destination SMTP server.
 Five agent involved:
-\begin{multicols}{2}
+
 	\begin{itemize}
 		\item Mail User Agent: email client
 		\item Mail Submission Agent : Process and forward
 		\item Mail Transmission Agent : Forward to other MTA or MDA
 		\item Mail Delivery Agent : Deliver to MUA destination
 	\end{itemize}
-\end{multicols}
-Each agent forward to the next agent.
+
+	Each agent forward to the next agent.
 \paragraph{Working} :
 
-\begin{tabular}{m{9cm}m{6cm}}
+\begin{tabular}{p{9cm}p{6cm}}
 \begin{enumerate}
     \item Client open transport connection with the server
     \item Once connection established, client server exchange \textit{greetings}
@@ -1046,7 +1051,7 @@ Each agent forward to the next agent.
 \end{enumerate}
 &
 \includegraphics[width=7cm]{stmp.png} \\
-\multicolumn{2}{m{15cm}}{220 : service ready, 221 : connection close, 250 : action okay, 354 : start mail, 3xx : need more information, 5xx : error}
+\multicolumn{2}{p{15cm}}{220 : service ready, 221 : connection close, 250 : action okay, 354 : start mail, 3xx : need more information, 5xx : error}
 \end{tabular}
 
 \subsubsection{The post office protocol (POP) }
@@ -1054,7 +1059,7 @@ POP run above a connection-oriented service. (\textit{Server listen on port 110}
 
 \paragraph{Working} :
 
-\begin{tabular}{m{9cm}m{6cm}}
+\begin{tabular}{p{9cm}p{6cm}}
 \begin{enumerate}
     \item Autorisation phase when the server verifies the client's credential 
         (\textit{username/password})
@@ -1278,7 +1283,7 @@ où rtt est le RTT mesuré et 1-60 sont les bornes minimal/maximal.
 
 \subparagraph{Jacobson's algorithm} : en pratique ça marche pas bien, donc jacobson a une
 autre idée. rto est toujours initialisé à 3 sec.
-\begin{multicols}{2}
+
 \begin{itemize}
     \item[-] Pour la première valeur de RTT
         \begin{eqnarray*}
@@ -1294,7 +1299,6 @@ autre idée. rto est toujours initialisé à 3 sec.
         srtt &=&  (\alpha \times srtt) + (1-\alpha) \times rtt) 
         \end{eqnarray*}
 \end{itemize}
-\end{multicols}
 
 \paragraph{$\alpha, \beta$ value : }  $\beta = \frac{1}{4}, \alpha = \frac{1}{8}$
 
@@ -1346,9 +1350,9 @@ Alternative au TCP qui offre :
 
 \subsubsection{Segment}
 C'est un header suivit d'un ensemble de chunk.
-\begin{figure}[h]
+\begin{figure}[!ht]
     \centering
-    \begin{tabular}{m{8cm}m{7cm}}
+    \begin{tabular}{p{8cm}p{7cm}}
         \includegraphics[width=8cm]{sctpsegment.png} &
         \includegraphics[width=7cm]{sctpchunk.png}
     \end{tabular}
@@ -1364,7 +1368,7 @@ STCP, contrairement à TCP, n'est pas limité sur le nombre d'option. C'est bon 
 \subsubsection{Connection etablishment}
 C'est un four-way handshake (pour contrer l'attaque ``Denial attack service'')
 
-\begin{figure}[h]
+\begin{figure}[!ht]
     \centering
     \includegraphics[width=6cm]{fourway.png}
     \caption{Fourway handshake}
@@ -1372,9 +1376,9 @@ C'est un four-way handshake (pour contrer l'attaque ``Denial attack service'')
 
 \subsubsection{Reliable data transfert}
 
-\begin{figure}[h]
+\begin{figure}[!ht]
     \centering
-    \begin{tabular}{m{8cm}m{8cm}}
+    \begin{tabular}{p{8cm}p{8cm}}
     \includegraphics[width=8cm]{datachunk.png} &
     \includegraphics[width=8cm]{sackchunk.png} 
 \end{tabular}
@@ -1401,7 +1405,7 @@ Applique un three-way handshake pour cloturer la connection, ou un ABORT chunk
 pour refuser une connection ou la cloturer immédiatement.
 
 \subsection{UDP - TCP - SCTP}
-\begin{table}[h]
+\begin{table}[!ht]
     \begin{tabular}{|c|c|c|c|c|c|}
     	   \hline
     	    Protocol& Reliablility&\#options&Mode&Establishment&Num seq\\
@@ -1437,7 +1441,6 @@ est detecté on divise \textsc{cwnd}.
 est de \textbf{MSS} bytes afin de ne pas congestionner le réseau au démarrage.
 (Cette valeur de départ a été augmenter à 15Kbyte)
 
-
 Toutefois, cwnd va augmenter lentement avant d'arriver a une valeur qui utilise efficacement le
 reseau. Pour éviter cela, on inclu un \textbf{slow-start algorithm} qui permet durant ce temps
 de doubler \textsc{cwnd} chaque RTT.
@@ -1448,13 +1451,13 @@ de doubler \textsc{cwnd} chaque RTT.
     \item \textit{severe congestion} : Quand le timer de transmission expire (on divise sstresh par 2 et cwin =MSS)
 \end{itemize}
 
-\begin{figure}[h]
+\begin{figure}[!ht]
     \centering
-    \begin{tabular}{m{8cm}m{8cm}}
+    \begin{tabular}{p{8cm}p{8cm}}
     \includegraphics[width=8cm]{severecongestion.png} &
     \includegraphics[width=8cm]{midlecongestion.png} \\
     \multicolumn{1}{c}{Severe congestion} & \multicolumn{1}{c}{Middle congestion }
-\end{tabular}
+    \end{tabular}
     \caption{Congestion window when detect congestion}
 \end{figure}
 
@@ -1500,7 +1503,7 @@ garantir la justesse.
 To show the factors that affect the performance of TCP,
 if $p$ is the segment loss ratio then $\frac{1}{p}$ is the number of segment successfully transfers.
 
-\begin{figure}[h]
+\begin{figure}[!ht]
     \centering
     \includegraphics[width=9cm]{modelingtcp.png}
     \caption{Evolution of the congestion window with regular losses}
@@ -1546,7 +1549,7 @@ au groupe. L'addresse \textbf{broadcast} est utilisé piur envoyer des messages 
 IPv4 ne pourra bientot plus supporter toute les adresses, d'ou le besoin
 de passer à une autre solution.
 
-\begin{tabular}{m{2.5cm}m{10cm}}
+\begin{tabular}{p{2.5cm}p{10cm}}
     Assumptions : &
     \begin{itemize}
         \item[-] Adress encoded on 128 bits
@@ -1563,7 +1566,7 @@ IPv6 support \textbf{unicast, multicast and anycast}.
 
 \paragraph{\textbf{Unicast}} :
 
-\begin{tabular}{m{8cm}m{7cm}}
+\begin{tabular}{p{8cm}p{7cm}}
     \begin{itemize}
         \item Global routing prefix that assigned to the \textbf{Internet Service Provider}
         \item Subnet id identifies a customer of ISP
@@ -1618,7 +1621,7 @@ link local unicast.
 \paragraph{\textbf{Multicast}}
 Permet d'envoyer un packet à toute les personnes d'une même groupe, dans une LAN.
 
-\begin{figure}[h]
+\begin{figure}[!ht]
     \centering
     \includegraphics[width=8cm]{multicast.png}
     \caption{Multicast adress}
@@ -1627,7 +1630,7 @@ Permet d'envoyer un packet à toute les personnes d'une même groupe, dans une L
 
 \paragraph{\textbf{IPv6 packet format}}
 
-\begin{figure}[h]
+\begin{figure}[!ht]
     \centering
     \includegraphics[width=12cm]{ipv6format.png}
     \caption{IPv6 packet format}
@@ -1816,7 +1819,7 @@ reprenant les distances vectors qui résume la routing table. Mais cela causait 
 Avec le link-state routing, pour des grands réseaux c'est très couteux de stocker
 l'ensemble du réseau en mémoire.
 
-\begin{tabular}{m{10cm}m{5cm}}
+\begin{tabular}{p{10cm}p{5cm}}
     \begin{itemize}
         \item \textbf{Border router} : Router attaché à plusieurs area
         \item \textbf{Internal router }
@@ -1883,7 +1886,7 @@ de performances plusieurs lien physique sont établi entre les domaines.
 via un IXP.  The IXP contient une LAN où tout les routers sont connectés.
 \end{itemize}
 
-\begin{figure}[h]
+\begin{figure}[!ht]
     \centering
     \includegraphics[width=8cm]{exchange.png}
     \caption{Internet eXchange Point}
@@ -1893,7 +1896,7 @@ via un IXP.  The IXP contient une LAN où tout les routers sont connectés.
 Le \textbf{coût} d'une route est très importante en interdomain
 alors qu'en intra on préfére la performance.
 
-\begin{figure}[h]
+\begin{figure}[!ht]
     \centering
     \includegraphics[width=5cm]{peering.png}
     \caption{Peering relationships}
@@ -1927,7 +1930,7 @@ Il existe deux types de relation entre domaine
         celle que le domain à reçu vers ce préfix de destination.
 \end{itemize}
 
-\begin{figure}[h]
+\begin{figure}[!ht]
     \centering
     \includegraphics[width=11cm]{policies.png}
     \caption{Import export policies example}
@@ -2023,7 +2026,7 @@ stuffing appliqué aux paquets IP utilisant deux caractères spéciaux :
     \item[-] \textsc{ESC} : devant un END s'il est dans les informations à transmettre
 \end{itemize}
 
-\begin{tabular}{cm{11cm}}
+\begin{tabular}{cp{11cm}}
     \underline{Limitations} de SLIP :
     &
     \begin{itemize}
@@ -2141,7 +2144,7 @@ pour transporter des framesPPP sur d'autre réseaux que les point-to-point.}
 
 \paragraph{Hub} : 
 
-\begin{tabular}{m{10cm}m{5cm}}
+\begin{tabular}{p{10cm}p{5cm}}
     Un hub est un relais sur la couche physique qui
     \begin{itemize}
         \item reçoit un signal électrique sur une interfaces 
@@ -2404,8 +2407,10 @@ L'encapsulation d'IP sur 802.11 ajoute 6 bytes au header 802.11, 4 bytes pour LL
    \subsection{MAC Address Learning par les switches}
 	  \lstset{keepspaces=true, keywordstyle=\color{red!70}, commentstyle=\color{blue!60}}
 	  \begin{center}
-	  \framebox{\begin{minipage}{0.9\linewidth}
-	     \lstinputlisting[language=Python]{mac_address_learning.py}
+	  \framebox{\begin{minipage}{\linewidth}
+	     %\lstinputlisting[language=Python]{mac_address_learning.py}
+	     %\listinginput[1]{1}{algorithm/mac_address_learning.py}
+	     % TODO : Trouver un joli environnement pour le code
 	  \end{minipage}}
 	  \end{center}
 	  
@@ -2413,7 +2418,7 @@ L'encapsulation d'IP sur 802.11 ajoute 6 bytes au header 802.11, 4 bytes pour LL
 	  \lstset{keepspaces=true, morekeywords={isin, each}, keywordstyle=\color{red!70}, commentstyle=\color{blue!60}, breaklines=true}
 	  \begin{center}
 	  \framebox{\begin{minipage}{\linewidth}
-	     \lstinputlisting[language=Python]{reception_of_distance_vector.py}
+	     %\lstinputlisting[language=Python]{reception_of_distance_vector.py}
 	  \end{minipage}}
 	  \end{center}
 
@@ -2421,7 +2426,7 @@ L'encapsulation d'IP sur 802.11 ajoute 6 bytes au header 802.11, 4 bytes pour LL
 	  \lstset{keepspaces=true, keywordstyle=\color{red!70}, commentstyle=\color{blue!60}}
 	  \begin{center}
 	  \framebox{\begin{minipage}{0.9\linewidth}
-	     \lstinputlisting[language=Python]{aloha.py}
+	     %\lstinputlisting[language=Python]{aloha.py}
 	  \end{minipage}}
 	  \end{center}
     
@@ -2429,7 +2434,7 @@ L'encapsulation d'IP sur 802.11 ajoute 6 bytes au header 802.11, 4 bytes pour LL
 	  \lstset{keepspaces=true, keywordstyle=\color{red!70}, commentstyle=\color{blue!60}}
 	  \begin{center}
 	  \framebox{\begin{minipage}{0.9\linewidth}
-	     \lstinputlisting[language=Python]{basic_CSMA.py}
+	     %\lstinputlisting[language=Python]{basic_CSMA.py}
 	  \end{minipage}}
 	  \end{center}
 	  
@@ -2437,7 +2442,7 @@ L'encapsulation d'IP sur 802.11 ajoute 6 bytes au header 802.11, 4 bytes pour LL
 	  \lstset{keepspaces=true, keywordstyle=\color{red!70}, commentstyle=\color{blue!60}}
 	  \begin{center}
 	  \framebox{\begin{minipage}{0.9\linewidth}
-	     \lstinputlisting[language=Python]{csma_cd_final_solution.py}
+	     %\lstinputlisting[language=Python]{csma_cd_final_solution.py}
 	  \end{minipage}}
 	  \end{center}
 
@@ -2445,7 +2450,7 @@ L'encapsulation d'IP sur 802.11 ajoute 6 bytes au header 802.11, 4 bytes pour LL
 	  \lstset{keepspaces=true, keywordstyle=\color{red!70}, commentstyle=\color{blue!60}}
 	  \begin{center}
 	  \framebox{\begin{minipage}{0.9\linewidth}
-	     \lstinputlisting[language=Python]{csma_ca_sender.py}
+	     %\lstinputlisting[language=Python]{csma_ca_sender.py}
 	  \end{minipage}}
 	  \end{center}
 	  
@@ -2453,7 +2458,7 @@ L'encapsulation d'IP sur 802.11 ajoute 6 bytes au header 802.11, 4 bytes pour LL
 	  \lstset{keepspaces=true, keywordstyle=\color{red!70}, commentstyle=\color{blue!60}}
 	  \begin{center}
 	  \framebox{\begin{minipage}{0.9\linewidth}
-	     \lstinputlisting[language=Python]{window_based_congestion_control.py}
+	     %\lstinputlisting[language=Python]{window_based_congestion_control.py}
 	  \end{minipage}}
 	  \end{center}
 	  
@@ -2461,10 +2466,12 @@ L'encapsulation d'IP sur 802.11 ajoute 6 bytes au header 802.11, 4 bytes pour LL
 	  \lstset{keepspaces=true, keywordstyle=\color{red!70}, commentstyle=\color{blue!60}}
 	  \begin{center}
 	  \framebox{\begin{minipage}{0.9\linewidth}
-	     \lstinputlisting[language=Python]{AIMD_in_tcp.py}
+		%\lstinputlisting[language=Python]{AIMD_in_tcp.py}
+
 	  \end{minipage}}
 	  \end{center}
 	  
-\biblio
+\bibliographystyle{plain}
+\bibliography{biblio.bib}
 
 \end{document}
