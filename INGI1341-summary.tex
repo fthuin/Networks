@@ -3,13 +3,14 @@
 \usepackage[utf8x]{inputenc} % Document UTF8
 \usepackage[francais]{babel} % Le document est en francais
 \usepackage[T1]{fontenc} % Suppression d'un warning
+\usepackage{url}
 \usepackage{color} % utilisation textcolor
-\usepackage{amsmath}
+\usepackage{amsmath} % Package mathématique
 \usepackage{multirow}
 \usepackage{multicol}
 \usepackage{graphicx}
 \usepackage{listings} % Pour le code
-\usepackage{moreverb}
+\usepackage{xcolor} % Insertion des couleurs
 
 % Footnote in tabular
 \usepackage{footnote}
@@ -18,7 +19,24 @@
 \author{Nicolas Houtain\and Benoît Legat\and Gorby Nicolas Ndonda Kabasele\and Florian Thuin}
 
 \graphicspath{{images/}}
-\lstset{inputpath=algorithm, keepspaces=true, morekeywords={isin, each}, keywordstyle=\color{red!70}, commentstyle=\color{blue!60}, breaklines=true}
+\lstset{inputpath=algorithm,
+  numbers=left,
+  numberstyle=\tiny\color{gray},
+  basicstyle=\rm\small\ttfamily,
+  keywordstyle=\bfseries\color{red},
+  %frame=single,
+  commentstyle=\color{gray}=small,
+  stringstyle=\color{green},
+  %backgroundcolor=\color{gray!10},
+  %tabsize=2,
+  rulecolor=\color{black!30},
+  %title=\lstname,
+  breaklines=true,
+  %framextopmargin=2pt,
+  %framexbottommargin=2pt,
+  extendedchars=true,
+  inputencoding=utf8x
+}
 
 \begin{document}
 \maketitle
@@ -2405,73 +2423,64 @@ L'encapsulation d'IP sur 802.11 ajoute 6 bytes au header 802.11, 4 bytes pour LL
 
 \section{Algorithmes}
    \subsection{MAC Address Learning par les switches}
-	  \lstset{keepspaces=true, keywordstyle=\color{red!70}, commentstyle=\color{blue!60}}
 	  \begin{center}
 	  \framebox{\begin{minipage}{\linewidth}
-	     %\lstinputlisting[language=Python]{mac_address_learning.py}
+	     \lstinputlisting[language=Python]{mac_address_learning.py}
 	     %\listinginput[1]{1}{algorithm/mac_address_learning.py}
 	     % TODO : Trouver un joli environnement pour le code
 	  \end{minipage}}
 	  \end{center}
 	  
     \subsection{Réception d'un distance vector}
-	  \lstset{keepspaces=true, morekeywords={isin, each}, keywordstyle=\color{red!70}, commentstyle=\color{blue!60}, breaklines=true}
 	  \begin{center}
 	  \framebox{\begin{minipage}{\linewidth}
-	     %\lstinputlisting[language=Python]{reception_of_distance_vector.py}
+	     \lstinputlisting[language=Python]{reception_of_distance_vector.py}
 	  \end{minipage}}
 	  \end{center}
 
     \subsection{Aloha}
-	  \lstset{keepspaces=true, keywordstyle=\color{red!70}, commentstyle=\color{blue!60}}
 	  \begin{center}
 	  \framebox{\begin{minipage}{0.9\linewidth}
-	     %\lstinputlisting[language=Python]{aloha.py}
+	     \lstinputlisting[language=Python]{aloha.py}
 	  \end{minipage}}
 	  \end{center}
     
     \subsection{CSMA basique}
-	  \lstset{keepspaces=true, keywordstyle=\color{red!70}, commentstyle=\color{blue!60}}
 	  \begin{center}
 	  \framebox{\begin{minipage}{0.9\linewidth}
-	     %\lstinputlisting[language=Python]{basic_CSMA.py}
+	      \lstinputlisting[language=Python]{basic_CSMA.py}
 	  \end{minipage}}
 	  \end{center}
 	  
     \subsection{CSMA/CD solution finale}
-	  \lstset{keepspaces=true, keywordstyle=\color{red!70}, commentstyle=\color{blue!60}}
 	  \begin{center}
 	  \framebox{\begin{minipage}{0.9\linewidth}
-	     %\lstinputlisting[language=Python]{csma_cd_final_solution.py}
+	     \lstinputlisting[language=Python]{csma_cd_final_solution.py}
 	  \end{minipage}}
 	  \end{center}
 
     \subsection{CSMA/CA côté sender}
-	  \lstset{keepspaces=true, keywordstyle=\color{red!70}, commentstyle=\color{blue!60}}
 	  \begin{center}
 	  \framebox{\begin{minipage}{0.9\linewidth}
-	     %\lstinputlisting[language=Python]{csma_ca_sender.py}
+	     \lstinputlisting[language=Python]{csma_ca_sender.py}
 	  \end{minipage}}
 	  \end{center}
 	  
     \subsection{Window-based congestion control}
-	  \lstset{keepspaces=true, keywordstyle=\color{red!70}, commentstyle=\color{blue!60}}
 	  \begin{center}
 	  \framebox{\begin{minipage}{0.9\linewidth}
-	     %\lstinputlisting[language=Python]{window_based_congestion_control.py}
+	     \lstinputlisting[language=Python]{window_based_congestion_control.py}
 	  \end{minipage}}
 	  \end{center}
 	  
     \subsection{Additive increase/multiplicative decrase in TCP}
-	  \lstset{keepspaces=true, keywordstyle=\color{red!70}, commentstyle=\color{blue!60}}
 	  \begin{center}
 	  \framebox{\begin{minipage}{0.9\linewidth}
-		%\lstinputlisting[language=Python]{AIMD_in_tcp.py}
-
+		\lstinputlisting[language=Python]{AIMD_in_tcp.py}
 	  \end{minipage}}
 	  \end{center}
 	  
 \bibliographystyle{plain}
-\bibliography{biblio.bib}
+\bibliography{biblio}
 
 \end{document}
